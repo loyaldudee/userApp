@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import Navbar from './Components/Navbar';
-
 const App = () => {
   const [screen, setScreen] = useState('register'); // Possible values: 'register', 'login', 'verifyOTP', 'home'
   const [username, setUsername] = useState('');
@@ -21,7 +20,7 @@ const App = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await fetch('http://192.168.72.201:3000/user/register', {
+      const response = await fetch('http://192.168.68.248:3000/user/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +42,7 @@ const App = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://192.168.72.201:3000/user/login', {
+      const response = await fetch('http://192.168.68.248:3000/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +66,7 @@ const App = () => {
 
   const handleVerifyOTP = async () => {
     try {
-      const response = await fetch('http://192.168.72.201:3000/user/verify', {
+      const response = await fetch('http://192.168.68.248:3000/user/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -163,8 +162,12 @@ const App = () => {
         );
       case 'home':
         return (
-          <View style={styles.homeContainer}>
-            <Navbar  name={username}  />
+          <View >
+            <Navbar /> 
+            {/* <Text style={styles.header}>Home</Text>
+            <Text style={styles.text}>Welcome, {username}!</Text>
+            <Button title="Profile" onPress={() => Alert.alert('Profile', 'View profile functionality to be implemented')} />
+            <Button title="Logout" onPress={handleLogout} /> */}
           </View>
         );
       default:
@@ -185,15 +188,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 16,
   },
-  homeContainer: {
-    flex: 1,
-  },
-  homeContent: {
-    flex: 1,
-    paddingTop: 50, // Adjust this value as needed to avoid overlap with the Navbar
+  navbar:{
+    flex:1,
+    position: 'absolute',
     justifyContent: 'center',
-    alignItems: 'center',
+    paddingHorizontal: 16,
   },
+
   header: {
     fontSize: 24,
     marginBottom: 24,
