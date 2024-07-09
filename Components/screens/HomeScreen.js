@@ -109,6 +109,7 @@ const HomeScreen = () => {
       />
       <Text style={styles.sectionTitle}>Best for you</Text>
       <FlatList
+        style={{ marginBottom: 40 }}
         data={houses}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
